@@ -1,0 +1,36 @@
+function openNav() {
+    document.getElementById("sideNavigation").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+ 
+function closeNav() {
+    document.getElementById("sideNavigation").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
+$(document).ready(function() {
+
+  $(".toggle-accordion").on("click", function() {
+    var accordionId = $(this).attr("accordion-id"),
+      numPanelOpen = $(accordionId + ' .collapse.in').length;
+    
+    $(this).toggleClass("active");
+
+    if (numPanelOpen == 0) {
+      openAllPanels(accordionId);
+    } else {
+      closeAllPanels(accordionId);
+    }
+  })
+
+  openAllPanels = function(aId) {
+    console.log("setAllPanelOpen");
+    $(aId + ' .panel-collapse:not(".in")').collapse('show');
+  }
+  closeAllPanels = function(aId) {
+    console.log("setAllPanelclose");
+    $(aId + ' .panel-collapse.in').collapse('hide');
+  }
+     
+});
+
+
